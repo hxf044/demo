@@ -25,7 +25,7 @@ public class LoginContext {
 
     public LoginContext(Map<String, LoginService> loginMap) {
         this.loginMap.clear();
-        loginMap.forEach((k, v)-> this.loginMap.put(k, v));
+        loginMap.forEach(this.loginMap::put);
     }
 
 
