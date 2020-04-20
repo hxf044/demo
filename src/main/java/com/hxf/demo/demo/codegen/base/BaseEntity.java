@@ -15,9 +15,6 @@ import java.time.LocalDateTime;
 
 /**
  * 实体映射超类
- *
- * @author yewenting2013@foxmail.com
- * @date 2019年03月06日 11:56
  */
 @Data
 @ToString(callSuper = true)
