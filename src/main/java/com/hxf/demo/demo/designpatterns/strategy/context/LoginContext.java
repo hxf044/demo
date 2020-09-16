@@ -1,6 +1,6 @@
-package com.hxf.demo.demo.designpatterns.context;
+package com.hxf.demo.demo.designpatterns.strategy.context;
 
-import com.hxf.demo.demo.designpatterns.service.LoginService;
+import com.hxf.demo.demo.designpatterns.strategy.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

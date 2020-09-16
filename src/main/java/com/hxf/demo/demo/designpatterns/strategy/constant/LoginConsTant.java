@@ -1,4 +1,4 @@
-package com.hxf.demo.demo.designpatterns.constant;
+package com.hxf.demo.demo.designpatterns.strategy.constant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

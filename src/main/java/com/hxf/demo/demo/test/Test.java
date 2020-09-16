@@ -1,13 +1,18 @@
 package com.hxf.demo.demo.test;
 
+import com.hxf.demo.demo.codegen.base.BaseEntity;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.jws.WebParam;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAccumulator;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -30,8 +35,28 @@ public class Test {
 
     //从初始值1开始，做累积处理
     private static LongAccumulator accumulator2 = new LongAccumulator((x, y) -> x*y, 1);
-
+    static final int MAXIMUM_CAPACITY = 1 << 30;
+    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    }
     public static void main(String[] args) {
+        /*log.info("MAXIMUM_CAPACITY={}", MAXIMUM_CAPACITY);
+        log.info("tableSizeFor={}", tableSizeFor(17));
+        HashMap<Object, Object> map = new HashMap<>(33);*/
+        List<BaseEntity> list = new ArrayList<>();
+        BaseEntity entity = new BaseEntity();
+        entity.setId(1L);
+        BaseEntity entity1 = new BaseEntity();
+        entity1.setId(2L);
+        list.add(entity);
+        list.add(entity1);
+        List<Long> list1 = list.stream().map(BaseEntity::getId).distinct().collect(Collectors.toList());
        /* service = Executors.newCachedThreadPool();
 
         for(int i=0; i<10; i++){

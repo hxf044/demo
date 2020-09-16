@@ -16,6 +16,7 @@ import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 
 import java.text.MessageFormat;
 import java.util.Scanner;
@@ -33,7 +34,6 @@ public final class CodeGenUtil {
    * 代码生成main
    */
   public static void main(String[] args) {
-
     CodeGenUtil.codeGen();
   }
 

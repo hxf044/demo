@@ -1,14 +1,13 @@
-package com.hxf.demo.demo.designpatterns.web;
+package com.hxf.demo.demo.designpatterns.strategy.web;
 
-import com.hxf.demo.demo.designpatterns.constant.LoginConsTant;
-import com.hxf.demo.demo.designpatterns.context.LoginContext;
-import com.hxf.demo.demo.designpatterns.service.LoginService;
+import com.hxf.demo.demo.designpatterns.strategy.constant.LoginConsTant;
+import com.hxf.demo.demo.designpatterns.strategy.context.LoginContext;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -21,18 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin/login")
 @Slf4j
+@Api(tags = "活动中心管理")
 public class LoginController {
 
     @Autowired
     private LoginContext loginContext;
 
-    /**
-     * 验证用户名密码
-     *
-     * @param type
-     * @return
-     */
+
     @GetMapping("/login/{type}")
+    @ApiOperation(value = "分页查询活动中心列表")
     public String login(@PathVariable("type") Integer type) {
         try {
             log.info("获取用户信息成功");
@@ -49,5 +45,16 @@ public class LoginController {
         return "fail";
     }
 
+
+    @PostMapping("/login1")
+    @ApiOperation(value = "分页查询活动中心列表1")
+    public String login(@RequestBody @Validated OfflineCouponReq req) {
+        try {
+            log.info("用户登录成功");
+            return "ok";
+        } catch (Exception e) {
+        }
+        return "fail";
+    }
 
 }

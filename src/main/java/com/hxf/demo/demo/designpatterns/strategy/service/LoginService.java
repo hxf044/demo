@@ -1,4 +1,4 @@
-package com.hxf.demo.demo.designpatterns.service;
+package com.hxf.demo.demo.designpatterns.strategy.service;
 
 /**
  * <p>
